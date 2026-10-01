@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --page: 245 249 255;
+    --surface: 255 255 255;
+    --surface-muted: 238 245 255;
+    --border: 219 232 249;
+    --text: 31 47 70;
+    --muted: 100 116 139;
+    --blue: 37 110 235;
+    --sidebar: 255 255 255;
+    --sidebar-text: 43 56 73;
+    --sidebar-muted: 99 115 134;
+    --sidebar-active: 224 243 255;
+    --chart-grid: #dbe8f9;
+    --chart-muted: #64748b;
+    --chart-surface: #ffffff;
+    --chart-text: #1f2f46;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+    --page: 15 23 42;
+    --surface: 24 35 57;
+    --surface-muted: 31 46 73;
+    --border: 48 66 96;
+    --text: 226 235 248;
+    --muted: 155 173 198;
+    --blue: 96 165 250;
+    --sidebar: 20 31 49;
+    --sidebar-text: 221 232 246;
+    --sidebar-muted: 162 179 201;
+    --sidebar-active: 35 58 83;
+    --chart-grid: #304260;
+    --chart-muted: #9baec6;
+    --chart-surface: #182339;
+    --chart-text: #e2ebf8;
+  }
+
+  body {
+    @apply antialiased font-sans;
+    color: rgb(var(--text));
+    background-color: rgb(var(--page));
+  }
+
+  button, input, select, textarea {
+    color-scheme: inherit;
+  }
+}
+
+/* Theme-aware equivalents for the existing page and component classes. */
+@layer utilities {
+  .bg-dark-900 { background-color: rgb(var(--page)); }
+  .bg-dark-800 { background-color: rgb(var(--surface)); }
+  .bg-dark-700 { background-color: rgb(var(--surface-muted)); }
+  .bg-dark-600 { background-color: rgb(var(--border)); }
+  .bg-dark-500 { background-color: rgb(var(--muted)); }
+  .border-dark-700, .border-dark-600 { border-color: rgb(var(--border)); }
+  .text-gray-100, .text-gray-200, .text-gray-300 { color: rgb(var(--text)); }
+  .text-gray-400, .text-gray-500, .text-gray-600 { color: rgb(var(--muted)); }
+  .text-accent-blue, .text-accent-cyan, .text-accent-purple { color: rgb(var(--blue)); }
+  .bg-accent-cyan\/10 { background-color: rgb(var(--blue) / 0.1); }
+  .bg-\[\#0a0a0a\] { background-color: rgb(var(--surface)); }
+}
+
+/* Keep line icons blue throughout the app; sidebar icons use white for contrast. */
+svg.lucide { color: rgb(var(--blue)); }
+.sidebar {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-right: 1px solid #1d4ed8;
+}
+.sidebar svg.lucide { color: #ffffff; }
+.sidebar .sidebar-brand-mark { background-color: rgb(255 255 255 / 0.16); }
+.sidebar .sidebar-nav-link { color: #ffffff; }
+.sidebar .sidebar-nav-link:hover { background-color: rgb(255 255 255 / 0.18); color: #ffffff; }
+.sidebar .sidebar-nav-link[aria-current="page"] {
+  background-color: rgb(255 255 255 / 0.2);
+  color: #ffffff;
+}
+.dashboard-kpi-icon svg.lucide {
+  color: #2563eb;
+  stroke-width: 2.75;
+}
+:root.dark .pipeline-github-logo { filter: brightness(0) invert(1); }
+
+/* Neutral light header on the right; icons stay black without a filled badge. */
+.app-header {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+.app-header svg.lucide { color: #2563eb; }
+.app-header .header-theme-toggle {
+  background-color: transparent;
+  border-color: transparent;
+  color: #2563eb;
+}
+.app-header .header-theme-toggle:hover { background-color: transparent; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background-color: rgb(var(--page)); }
+::-webkit-scrollbar-thumb { background-color: rgb(var(--border)); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background-color: rgb(var(--muted)); }

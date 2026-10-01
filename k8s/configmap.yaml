@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lognex-config
+  namespace: lognex
+data:
+  SPRING_PROFILES_ACTIVE: "production"
+  LOGNEX_GENERATOR_RATE: "10"
+  SERVER_PORT: "8085"

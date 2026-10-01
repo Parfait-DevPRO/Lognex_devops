@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lognex-backend-service
+  namespace: lognex
+spec:
+  selector:
+    app: lognex-backend
+  type: ClusterIP
+  ports:
+    - port: 8085
+      targetPort: 8085
+      protocol: TCP
